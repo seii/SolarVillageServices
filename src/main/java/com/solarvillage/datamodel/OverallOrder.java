@@ -1,34 +1,72 @@
 package com.solarvillage.datamodel;
 
+import java.time.LocalDate;
+
 public class OverallOrder {
-	private String ownerName;
-	private String ownerAddress;
-	private String electricalPermitID;
-	private String structuralPermitID;
+	HOAApproval hoaApproval;
+	GovtApproval govtApproval;
 	
-	public String getOwnerName() {
-		return ownerName;
+	//Constructor for owners who are not part of an HOA
+	public OverallOrder(String ownerName, String ownerAddress, String elecPermID, String strucPermID) {
+		hoaApproval = null;
+		govtApproval = new GovtApproval();
+		
+		govtApproval.setElectricalPermitID(elecPermID);
+		govtApproval.setStructuralPermitID(strucPermID);
+		govtApproval.setOwnerName(ownerName);
+		govtApproval.setOwnerAddress(ownerAddress);
 	}
-	public void setOwnerName(String ownerName) {
-		this.ownerName = ownerName;
+	
+	//Constructor for owners who are part of an HOA
+	public OverallOrder(String ownerName, String ownerAddress, String hoaName, String hoaAddress,
+						String elecPermID, String strucPermID, String hoaMeetingDate) {
+		hoaApproval = new HOAApproval();
+		govtApproval = new GovtApproval();
+		
+		hoaApproval.setHoaAddress(hoaAddress);
+		hoaApproval.setHoaName(hoaName);
+		hoaApproval.setOwnerAddress(ownerAddress);
+		hoaApproval.setOwnerName(ownerName);
+		
+		//The below is the Java 7 and below way of performing Date calculations
+		/*DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+		dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+		Date parsedMeetingDate;
+		
+		try {
+			parsedMeetingDate = dateFormat.parse(hoaMeetingDate);
+			hoaApproval.setHoaMeetingDate(parsedMeetingDate);
+			
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		
+		//The below is the Java 8 and above way of performing LocalDate calculations
+		LocalDate meetingDate = LocalDate.parse(hoaMeetingDate);
+		
+		hoaApproval.setHoaMeetingDate(meetingDate);
+		
+		govtApproval.setElectricalPermitID(elecPermID);
+		govtApproval.setStructuralPermitID(strucPermID);
+		govtApproval.setOwnerName(ownerName);
+		govtApproval.setOwnerAddress(ownerAddress);
 	}
-	public String getOwnerAddress() {
-		return ownerAddress;
+
+	public HOAApproval getHoaApproval() {
+		return hoaApproval;
 	}
-	public void setOwnerAddress(String ownerAddress) {
-		this.ownerAddress = ownerAddress;
+
+	public void setHoaApproval(HOAApproval hoaApproval) {
+		this.hoaApproval = hoaApproval;
 	}
-	public String getElectricalPermitID() {
-		return electricalPermitID;
+
+	public GovtApproval getGovtApproval() {
+		return govtApproval;
 	}
-	public void setElectricalPermitID(String electricalPermitID) {
-		this.electricalPermitID = electricalPermitID;
-	}
-	public String getStructuralPermitID() {
-		return structuralPermitID;
-	}
-	public void setStructuralPermitID(String structuralPermitID) {
-		this.structuralPermitID = structuralPermitID;
+
+	public void setGovtApproval(GovtApproval govtApproval) {
+		this.govtApproval = govtApproval;
 	}
 	
 }

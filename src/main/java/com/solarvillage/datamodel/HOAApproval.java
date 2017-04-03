@@ -1,10 +1,13 @@
 package com.solarvillage.datamodel;
 
+import java.time.LocalDate;
+
 public class HOAApproval {
 	private String ownerName;
 	private String ownerAddress;
 	private String hoaName;
 	private String hoaAddress;
+	private LocalDate hoaMeetingDate;
 	private boolean isApproved;
 	
 	public String getOwnerName() {
@@ -30,6 +33,12 @@ public class HOAApproval {
 	}
 	public void setHoaAddress(String hoaAddress) {
 		this.hoaAddress = hoaAddress;
+	}
+	public LocalDate getHoaMeetingDate() {
+		return hoaMeetingDate;
+	}
+	public void setHoaMeetingDate(LocalDate hoaMeetingDate) {
+		this.hoaMeetingDate = hoaMeetingDate;
 	}
 	public boolean isApproved() {
 		return isApproved;
