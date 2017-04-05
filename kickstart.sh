@@ -8,6 +8,6 @@ cd SolarVillageServices
 mvn clean install
 
 echo '--- Copying WAR file to provided EAP deployments directory ---'
-cp target/bpmspoc.war $1/deployments/
+cp target/bpmspoc.war $1/standalone/deployments/
 
 echo '--- Script complete! ---'
