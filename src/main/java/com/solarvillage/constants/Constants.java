@@ -9,6 +9,10 @@ public class Constants {
 	public static final String ELECTRICAL_APPROVED = "Electrical permit approved";
 	public static final String STRUCTURAL_APPROVED = "Structural permit approved";
 	
+	public static final String SIGNAL_APPROVE = "approve";
+	public static final String SIGNAL_DENY = "deny";
+	public static final String SIGNAL_RESET = "reset";
+	
 	public static final String SUCCESS = "SUCCESS";
 	public static final String FAILED = "FAILED";
 }

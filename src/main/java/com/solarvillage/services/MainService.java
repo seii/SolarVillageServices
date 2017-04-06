@@ -74,6 +74,53 @@ public class MainService {
 		
 		return result;
 	}
+	
+	@POST
+	@Path("signal/{type}/{name}/{signal}")
+	public String signalPermit(@PathParam("type") final String type, @PathParam("name") final String name,
+								@PathParam("signal") final String signal) {
+		String result;
+		
+		if(type != null && name != null && signal != null) {
+			if(type.equals("electrical")) {
+				String elecCheck = Electrical.permitList.get(name);
+				
+				if(elecCheck != null) {
+					if(signal.equals(Constants.SIGNAL_APPROVE) ||
+						signal.equals(Constants.SIGNAL_DENY) ||
+						signal.equals(Constants.SIGNAL_RESET)) {
+						Electrical.changePermitRequestStatus(name, signal);
+						result = Constants.SUCCESS;
+					}else {
+						result = "ERROR: Unable to signal permit with ID " + name;
+					}
+				}else {
+					result = "ERROR: Electrical permit by that name does not exist!";
+				}
+			}else if(type.equals("structural")) {
+				String strucCheck = Structural.permitList.get(name);
+				
+				if(strucCheck != null) {
+					if(signal.equals(Constants.SIGNAL_APPROVE) ||
+							signal.equals(Constants.SIGNAL_DENY) ||
+							signal.equals(Constants.SIGNAL_RESET)) {
+							Structural.changePermitRequestStatus(name, signal);
+							result = Constants.SUCCESS;
+						}else {
+							result = "ERROR: Unable to signal permit with ID " + name;
+						}
+				}else {
+					result = "ERROR: Structural permit by that name does not exist!";
+				}
+			}else {
+				result = "ERROR: Invalid type specified!";
+			}
+		}else {
+			result = "ERROR: Name, type, or signal not specified!";
+		}
+		
+		return result;
+	}
 
 	/* DELETE */
 	
