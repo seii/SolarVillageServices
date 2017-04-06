@@ -30,6 +30,10 @@ The REST service, once installed, exposes the following endpoints:
   - Create a request for a new electrical permit with the identifier `<permit ID>`
 - [POST] `/bpmspoc/rest/query/create/structural/<permit ID>`
   - Create a request for a new structural permit with the identifier `<permit ID>`
+- [POST] `/bpms/poc/rest/query/signal/electrical/<permit ID>/<signal>`
+  - Signal an electrical permit request identified by `<permit ID>`. Valid values of `<signal>` are `approve`, `deny`, or `reset`.
+- [POST] `/bpms/poc/rest/query/signal/structural/<permit ID>/<signal>`
+  - Signal a structural permit request identified by `<permit ID>`. Valid values for `<signal>` are `approve`, `deny`, or `reset`.
 - [DELETE] `/bpmspoc/rest/query/rescind/electrical/<permit ID>`
   - Delete a request for an electrical permit with the identifier `<permit ID>`
 - [DELETE] `/bpmspoc/rest/query/rescind/structural/<name>`
