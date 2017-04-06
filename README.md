@@ -1,5 +1,5 @@
 # SolarVillageServices
-This repository contains the necessary code to build and deploy mock REST services for a theoretical consulting engagement which uses Red Hat BPMS software. The theoretical company is named "Solar Village", and these services mock a hypothetical external government API which would allow the creation, status query, and deletion of solar panel permits.
+This repository contains the necessary code to build and deploy mock REST services for a theoretical consulting engagement which uses Red Hat BPMS software. The theoretical company is named "Solar Village", and these services mock a hypothetical (external) government API which would allow the creation, status query, signalling, and deletion of solar panel permits.
 
 ### Pre-Requisites
 - Java (version 7 or higher preferred)
