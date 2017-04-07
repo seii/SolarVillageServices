@@ -5,7 +5,7 @@ git clone https://github.com/seii/SolarVillageServices.git
 
 echo '--- Building WAR file ---'
 cd SolarVillageServices
-mvn clean install
+mvn clean package
 
 echo '--- Copying WAR file to provided EAP deployments directory ---'
 cp target/bpmspoc.war $1/standalone/deployments/
