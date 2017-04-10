@@ -26,14 +26,22 @@ public class MainService {
 	}
 	
 	@GET
-	@Path("get/all")
-	//TODO: Bring this up to date
+	@Path("status")
 	public String getAll() {
-		String output = "Permits: \n";
+		String output = "Electrical Permits: \n===============\n";
 		Iterator<String> iter1 = Electrical.permitList.keySet().iterator();
 		
 		while(iter1.hasNext()) {
-			output = output + Electrical.permitList.get(iter1.next()) + "\n";
+			String key = iter1.next();
+			output = output.concat(key + " -- " + Electrical.permitList.get(key) + "\n");
+		}
+		
+		output = output.concat("\nStructural Permits: \n===============\n");
+		Iterator<String> iter2 = Structural.permitList.keySet().iterator();
+		
+		while(iter2.hasNext()) {
+			String key = iter2.next();
+			output = output.concat(key + " -- " + Structural.permitList.get(key) + "\n");
 		}
 		
 		return output;

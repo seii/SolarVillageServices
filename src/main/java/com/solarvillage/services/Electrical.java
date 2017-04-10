@@ -44,7 +44,6 @@ public class Electrical {
 						result = "ERROR: Invalid status supplied!";
 						break;
 				}
-				permitList.put(requestId, newStatus);
 			}else {
 				result = "ERROR: Invalid status supplied!";
 			}
